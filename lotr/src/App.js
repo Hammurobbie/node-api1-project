@@ -4,9 +4,7 @@ import "./App.css";
 import CharacterCard from "./CharacterCard";
 
 function App() {
-  const [characters, setCharacters] = useState(null);
-
-  console.log(characters);
+  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     axios
@@ -14,15 +12,16 @@ function App() {
       .then(res => {
         console.log(res.data);
         setCharacters(res.data);
+        console.log(characters);
       })
       .catch(err => console.log(err.message));
   }, []);
 
   return (
     <div className="App">
-      {characters.map(char => {
-        <CharacterCard key={char.id} data={char} />;
-      })}
+      {characters.map(char => (
+        <CharacterCard key={char.id} data={char} />
+      ))}
     </div>
   );
 }

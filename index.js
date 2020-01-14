@@ -1,15 +1,15 @@
 // implement your API here
 const express = require("express");
 
-const cors = require("cors");
-
 const HttpFunctions = require("./data/db");
+
+const cors = require("cors");
 
 const server = express();
 
-server.use(express.json());
-
 server.use(cors());
+
+server.use(express.json());
 
 // server.get("/", (req, res) => {
 //   res.send({ Hello: "from ya boi" });
